@@ -1,7 +1,5 @@
 package jpabook.start;
 
-import jdk.swing.interop.SwingInterOpUtils;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -44,11 +42,15 @@ public class JpaMain {
 
 //        한 건 조회
         MemberEntity findMember = em.find(MemberEntity.class, id);
+//      이렇게 사용하면 영속성 컨테이너에서 찾으므로 flush를 하지 않는다.
+
         System.out.println(findMember);
 
 
         List<MemberEntity> members = em.createQuery("SELECT m FROM MemberEntity m", MemberEntity.class).getResultList();
+
 //        테이블이 아닌 엔티티 객체에 검색을 해야한다. !!!!
+// JPQL을 사용하면 자동으로 flush를 하고 쿼리를 실행한다.
 
         System.out.println("member.size() :  "+ members.size());
 

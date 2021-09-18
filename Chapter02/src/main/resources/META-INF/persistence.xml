@@ -3,12 +3,23 @@
     <persistence-unit name="hibernate">
         <class>Chapter02.start.MemberEntity</class>
         <properties>
+<!--            JDBC 설정 -->
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test"/>
+<!--            Hibernate 방언 설정-->
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+<!--            flush에 대한 설정-->
+<!--
+            <property name="javax.persistence.FlushModeType" value="AUTO"/>
+            커밋이나 쿼리를 실행할 때 플러스(기본값)
+-->
 
+<!--
+            <property name="javax.persistence.FlushModeType" value="COMMIT"/>
+            커밋할 때만 플러시
+-->
 
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
