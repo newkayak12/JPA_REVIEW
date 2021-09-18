@@ -1,4 +1,4 @@
-package jpabook.start;
+package jpabook.start.chapter02;
 
 import lombok.*;
 

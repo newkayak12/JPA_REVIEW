@@ -1,4 +1,4 @@
-package jpabook.start;
+package jpabook.start.chapter02;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -62,7 +62,7 @@ public class ExamMergeMain {
 
         System.out.println("em2 contains member :: " + em2.contains(memberEntity));
         System.out.println("em2 contains mergeMember :: "+em2.contains(mergeMember));
-        
+
 //        여러 번 실행했을 때를 위한 코드
         tx2.begin();
         em2.remove(mergeMember);
