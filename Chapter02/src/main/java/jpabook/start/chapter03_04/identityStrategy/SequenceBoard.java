@@ -1,4 +1,4 @@
-package jpabook.start.chapter03.identityStrategy;
+package jpabook.start.chapter03_04.identityStrategy;
 
 import lombok.*;
 
@@ -15,10 +15,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "board")
-@TableGenerator(
+@SequenceGenerator(
         name = "BOARD_SEQ_GENERATOR",
-        table = "MY_SEQUENCE",
-        pkColumnName = "BOARD_SEQ", allocationSize = 1
+        sequenceName = "BOARD_SEQ",
+        initialValue = 1, allocationSize = 1
 )
 /*
     name : 식별자 생성기 이름
@@ -29,10 +29,10 @@ import javax.persistence.*;
     catalog, schema
 */
 
-public class TableBoard {
+public class SequenceBoard {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "BOARD_SEQ_GENERATOR")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BOARD_SEQ_GENERATOR")
 //    트랜잭션 지연 지원 안 함
     private Long id;
 

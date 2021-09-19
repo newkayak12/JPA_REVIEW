@@ -1,4 +1,4 @@
-package jpabook.start.chapter03.identityStrategy;
+package jpabook.start.chapter03_04.identityStrategy;
 
 import lombok.*;
 
@@ -23,4 +23,6 @@ public class AutoIncrementBoard {
 
     @Column
     private String data;
+
+
 }

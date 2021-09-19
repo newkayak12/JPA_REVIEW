@@ -1,10 +1,9 @@
-package jpabook.start.chapter03;
+package jpabook.start.chapter03_04;
 
-import jpabook.start.chapter03.Member;
-import jpabook.start.chapter03.identityStrategy.AutoBoard;
-import jpabook.start.chapter03.identityStrategy.AutoIncrementBoard;
-import jpabook.start.chapter03.identityStrategy.SequenceBoard;
-import jpabook.start.chapter03.identityStrategy.TableBoard;
+import jpabook.start.chapter03_04.identityStrategy.AutoBoard;
+import jpabook.start.chapter03_04.identityStrategy.AutoIncrementBoard;
+import jpabook.start.chapter03_04.identityStrategy.SequenceBoard;
+import jpabook.start.chapter03_04.identityStrategy.TableBoard;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

@@ -6,12 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Data
-@Getter
-@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-@ToString
-@EqualsAndHashCode
 public class Member {
 private String id;
 private String userName;
