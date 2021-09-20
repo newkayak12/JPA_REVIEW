@@ -1,4 +1,4 @@
-package chpater05.relationshipWithJpa;
+package chpater05.biDirectional;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,8 +11,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-//@Entity
-//@Table(name = "MEMBER")
+@Entity
+@Table(name = "MEMBER")
 public class Member {
     public Member(String id, String userName) {
         this.id = id;
@@ -28,6 +28,7 @@ public class Member {
     @ManyToOne
     @JoinColumn(name = "TEAM_ID")
     private Team team;
+//    다수의 회원에 하나의 팀
 
 /*
     @JoinColumn : 외래키 매핑에서 사용한다.
@@ -48,5 +49,23 @@ public class Member {
 
  */
 
+//    >>>>>>>>>>>>>>>>>>이와 같이 중복되는 코드를 아예 메소드로 둬서 재활용성을 높이는 것이 좋다.
+    public void setTeam(Team team){
+        /*
+        this.team = team;
+        team.getMembers().add(this);
+        */
+
+
+//        단! 일전에 이미 해당 객체와 연과놕ㄴ계가 있다면, 같은 객체가 List에 두 번 들어가게 된다. 따라서 코드를
+//        혹은 연관관계를 바꾸게 된다면!
+        if(this.team!=null){
+            this.team.getMembers().remove(this);
+        }
+        this.team = team;
+        team.getMembers().add(this);
+//        와 같이 수정해야한다.
+
+    }
 
 }

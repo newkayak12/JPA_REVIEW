@@ -13,21 +13,23 @@ public class ManyToOneCRUD {
     public static EntityManagerFactory emf = Persistence.createEntityManagerFactory("hibernate");
 
     public static void main(String[] args) {
-        testSave();
-//        저장
+//        testSave();
+////        저장
+//
+//        testFind();
+////       객체 그래프 탐색
+//
+//        testUpdate();
+////        업데이트 > find로 찾고 엔티티를 수정하면 트랜잭션 수행 시, 알아서 수정되는 구조임
+//
+//        removeRelation();
+////        연관관계 제거
+//
+//        jpql();
+////        JPQL을 이용한 조인
 
-        testFind();
-//       객체 그래프 탐색
-
-        testUpdate();
-//        업데이트 > find로 찾고 엔티티를 수정하면 트랜잭션 수행 시, 알아서 수정되는 구조임
-
-        removeRelation();
-//        연관관계 제거
-
-        jpql();
-//        JPQL을 이용한 조인
     }
+
     public static void testFind(){
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -90,7 +92,7 @@ public class ManyToOneCRUD {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
-            Team team1 = new Team("team1","팀");
+            Team team1 = new Team("T1","팀1");
             em.persist(team1);
 
             Member member1 = new Member("member1","회원1");

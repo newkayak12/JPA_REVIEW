@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+    <persistence-unit name="hibernate">
+        <class>Chapter02.start.MemberEntity</class>
+        <properties>
+<!--            JDBC 설정 -->
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test"/>
+<!--            Hibernate 방언 설정-->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+<!--            flush에 대한 설정-->
+<!--
+            <property name="javax.persistence.FlushModeType" value="AUTO"/>
+            커밋이나 쿼리를 실행할 때 플러스(기본값)
+-->
+
+<!--
+            <property name="javax.persistence.FlushModeType" value="COMMIT"/>
+            커밋할 때만 플러시
+-->
+<!--            DDL-->
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+<!--
+
+        create : 기존 테이블을 삭제하고 새로 생성
+        create-drop : create속성에 추가로 애플리케이션을 종료할 때 생성한 DDL을 삭제
+        update : 데이터베이스 테이블과 엔티티 매핑 정보를 비교해서 변경 사항만 수정한다.
+        validate : 데이터 베이스 테이블과 엔티티 매핑정보를 비교해서 차이가 있으면 경고를 남기고 애플리케이션을 실행하지 않음 >> DDL 수행이 아닌 제대로 매핑되었는가를 표기
+        non : 자동 생성 끄기
+
+-->
+
+<!--           Camel과 snake 호환-->
+            <property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>
+
+<!--            기본키 매핑 전략-->
+            <property name="hibernate.id.new_generator_mappings" value="true"/>
+
+
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comment" value="true"/>
+            <property name="hibernate.id.new_generator_mappings" value="true"/>
+
+        </properties>
+    </persistence-unit>
+</persistence>
