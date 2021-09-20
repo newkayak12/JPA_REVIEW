@@ -1,4 +1,4 @@
-package jpabook.start.chapter04Exam.model.entity;
+package entity;
 
 import lombok.*;
 

@@ -1,4 +1,4 @@
-package jpabook.start.chpater05.relationshipWithJpa;
+package chpater05.relationshipWithJpa;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

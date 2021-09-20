@@ -1,6 +1,9 @@
-package jpabook.start.chapter04Exam.model.entity;
+package entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,21 +11,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 
 //@Entity
-public class Member {
+public class Item {
+
     @Id @GeneratedValue
-    @Column(name = "MEMBER_ID")
+    @Column(name = "ITEM_ID")
     private Long id;
 
     private String name;
-    private String city;
-    private String street;
-    private String zipcode;
+    private int price;
+    private int stockQuantity;
+
+
 }
-
-
-

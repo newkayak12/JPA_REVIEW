@@ -15,7 +15,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @Builder
 
-@Entity
+//@Entity
 public class Item {
 
     @Id @GeneratedValue

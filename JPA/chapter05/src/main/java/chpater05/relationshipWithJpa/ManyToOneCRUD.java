@@ -1,16 +1,16 @@
-package jpabook.start.chpater05.relationshipWithJpa;
+package chpater05.relationshipWithJpa;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 import java.util.List;
 
-import static jpabook.start.chapter03_04.JpaMain.emf;
 
 public class ManyToOneCRUD {
 
-//    public static EntityManagerFactory emfs = Persistence.createEntityManagerFactory("hibernate");
+    public static EntityManagerFactory emf = Persistence.createEntityManagerFactory("hibernate");
 
     public static void main(String[] args) {
         testSave();
