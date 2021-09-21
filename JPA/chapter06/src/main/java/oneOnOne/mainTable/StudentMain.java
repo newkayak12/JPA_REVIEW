@@ -1,4 +1,4 @@
-package OneOnOne.mainTable;
+package oneOnOne.mainTable;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,15 +13,16 @@ import javax.persistence.*;
 @Builder
 
 @Entity
-public class LockerSub {
-
+public class StudentMain {
     @Id
     @GeneratedValue
-    @Column(name = "LOCKERSUB_ID")
-
+    @Column(name = "STUDENTMAIN_ID")
     private Long id;
-    private String name;
 
-    @OneToOne(mappedBy = "locker")
-    private StudentMain student;
+    private String userName;
+
+    @OneToOne
+    @JoinColumn(name = "LOCKERSUB_ID")
+    private LockerSub locker;
+
 }

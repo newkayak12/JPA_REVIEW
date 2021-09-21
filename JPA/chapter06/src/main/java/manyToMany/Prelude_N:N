@@ -1,0 +1,16 @@
+관계형 DB로는  N:N을 두 개의 테이블로 표현할 수 없다.
+-----MEMBER-----     -----PRODUCT-----
+| MEMBER_ID(PK)|     | PRODUCT_ID(PK)|
+| USERNAME     |     | NAME          |
+----------------     -----------------
+
+그래서 이 사이에 다른 테이블을 놓는다.
+
+-----MEMBER-----  -----MEMBER_PRODUCT-----  -----PRODUCT-----
+| MEMBER_ID(PK)|  | MEMBER_ID(PK, FK)    |  | PRODUCT_ID(PK)|
+| USERNAME     |  | PRODUCT_ID(PK, FK)   |  | NAME          |
+----------------  ------------------------  -----------------
+
+
+>>> 객체는 객체 두 개만으로 N:N을 표현할 수 있다.
+컬렉션을 사용하면 된다.

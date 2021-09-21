@@ -1,4 +1,4 @@
-package OneOnOne.subTable;
+package oneOnOne.subTable;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
