@@ -1,4 +1,4 @@
-package oneToMany;
+package oneToMany_oneWay;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
