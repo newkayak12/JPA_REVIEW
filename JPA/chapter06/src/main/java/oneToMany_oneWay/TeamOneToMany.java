@@ -1,4 +1,4 @@
-package entity;
+package oneToMany_oneWay;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,22 +15,20 @@ import java.util.List;
 @Builder
 
 @Entity
-public class MemberExam {
-
+@Table(name = "TEAMONETOMANY")
+public class TeamOneToMany {
     @Id @GeneratedValue
-    @Column(name = "MEMBER_ID")
+    @Column(name = "TEAMONETOMANY_ID")
+
     private Long id;
 
     private String name;
 
-    private String city;
+    @OneToMany
+    @JoinColumn(name = "TEAMONETOMANY_ID")
+    private List<MemberOneToMany> members = new ArrayList<>();
 
-    private String street;
-
-    private String zipcode;
-
-    @OneToMany(mappedBy = "member")
-    private List<OrderExam> orders = new ArrayList<>();
-
-
+    public TeamOneToMany(String name) {
+        this.name = name;
+    }
 }

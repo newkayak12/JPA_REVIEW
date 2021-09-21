@@ -1,4 +1,4 @@
-package entity;
+package oneToMany_oneWay;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

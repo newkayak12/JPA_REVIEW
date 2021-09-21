@@ -1,4 +1,4 @@
-package entity;
+package oneToMany_oneWay;
 
 public enum OrderStatus {
 

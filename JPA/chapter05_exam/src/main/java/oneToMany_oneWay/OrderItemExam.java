@@ -1,4 +1,4 @@
-package entity;
+package oneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,6 +14,7 @@ import javax.persistence.*;
 
 
 @Entity
+@Table(name = "ORDER_ITEM")
 public class OrderItemExam {
 
     @Id
