@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/js/index.js"></script>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	<input type="hidden" value="{{boardOne.boardNumber}}" id="boardNumber" name="boardNumber">
+
+	<div style="width: 100%; height: 40%;">
+		<table class="table-line table-widthHeight">
+			<tr>
+				<th class="table th">제목</th>
+				<td class="table">
+					<input type="text" id="title" name="title" value="{{boardOne.title}}"  style="font-size: 20px; width: 100%;">
+					
+				</td>
+			</tr>
+			<tr>
+				<th class="table th">작성자</th>
+				<td class="table">
+					<input type="text" id="userNickname" name="userNickname" value="{{boardOne.userNickname}}" readonly style="font-size: 20px;">
+				</td>
+			</tr>
+			<tr>
+				<th class="table th">내용</th>
+				<td class="table">
+					<textarea id="content" name="content" style="font-size: 20px;" cols="130" rows="10" >{{boardOne.content}}</textarea>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="btn-box">
+		<span>
+			<button onclick="updateBoard()"> 수정 </button>
+		</span>
+		<span>
+			<button onclick="deleteBoard()"> 삭제 </button>
+		</span>
+	</div>
+</body>
+</html>

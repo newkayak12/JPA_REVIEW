@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/js/index.js"></script>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	<div>
+		<table class="table-line table-widthHeight">
+			<tr>
+				<th class="table th">ID</th>
+				<td class="table">
+					<input type="text" name="userId" id="userId" style="width: 100%; font-size: 32px;">
+				</td>
+			</tr>
+			<tr>
+				<th class="table th">password</th>
+				<td class="table">
+					<input type="password" name="userPassword" id="userPassword" style="width: 100%; font-size: 32px;">
+				</td>
+			</tr>
+		</table>
+
+		<div class="inner-center-row">
+			<span>
+				<button  id="gotoHome" onclick="location.assign('/')" class="pointer sz20">돌아가기</button>
+			</span>
+			<span>
+				<button id="signup" class="pointer sz20" onclick="alert('지원하지 않음!')">sign up</button>
+			</span>
+		</div>
+	</div>
+	
+</body>
+</html>

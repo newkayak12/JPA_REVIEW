@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/js/index.js"></script>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+
+<body>	
+	<div class="inner-center-column outliner  mainOne">
+		<div >
+			<img src="/img/hibernate.png" alt="hibernate" style="padding-left: 55px;">
+		</div>
+		<div >
+			<input type="text" name="userId" id="userId" class="outliner  inputTag" placeholder="ID" style="font-size: 32px;">
+			<input type="password" name="userPassword" id="userPassword" class="outliner  inputTag" placeholder="PASSWORD" style="font-size: 32px;">
+			<div class="inner-center-row">
+				<span>
+					<button  id="signinBtn" onclick="signin()" class="pointer sz20">sign in</button>
+				</span>
+				<span>
+					<button id="signupBtn" class="pointer sz20" onclick="signupForm()">sign up</button>
+				</span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

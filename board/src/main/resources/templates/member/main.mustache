@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/js/index.js"></script>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	{{#userId}}
+		<h1>WELCOME! : {{userId}}!</h1>
+	{{/userId}}
+		<div>
+			<div class="writeBox">
+				<button onclick="writeBoard()">작성</button>
+				<button onclick="location.assign('/goto/logout')">로그아웃</button>
+			</div>
+			<table class="table-line table-widthHeight">
+				<thead >
+					<tr>
+						<th class="table th">번호</th>
+						<th class="table th">제목</th>
+						<th class="table th">작성자</th>
+					</tr>
+				</thead >
+				<tbody id="content">
+					{{#boards}}
+					<tr onclick="showDetail({{boardNumber}})">
+						<td class="table">{{boardNumber}}</td>
+						<td class="table">{{title}}</td>
+						<td class="table">{{userNickname}}</td>
+					</tr>
+					{{/boards}}
+				</tbody>
+			</table>
+		</div>
+</body>
+</html>
