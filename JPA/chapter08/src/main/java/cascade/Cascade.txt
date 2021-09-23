@@ -1,0 +1,4 @@
+                                                    CASCADE
+
+    특정 엔티티를 영속 상태로 만들면서 연관된 엔티티도 함께 영속 상태로 만들고 싶으면 영속성 전이(transitive persistence) 기능을 사용하면 된다.
+JPA는 cascade 옵션으로 영속성 전이를 제공한다.
