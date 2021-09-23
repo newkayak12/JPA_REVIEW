@@ -1,0 +1,27 @@
+1. 프록시와 식별자
+
+    엔티티를 프록시로 조회할 때 PK 값을 파라미터로 전달하는데, 프록시 객체는 이 식별자 값을 보관한다.
+
+            Team team = em.getReference(Team.class, "team1"); // 식별자를 보관한다.
+            따라서, team.getId()로 id를 찾아도 프록시를 초기화 하지 않는다.
+
+            단! @Access로 AccessType.PROPERTY로 설정한 경우에만 초기화 하지 않는다.
+                    엔티티 접근 방식을 필드 (@Access(AccessType.Field))로 설정하면 getId()를 했을 때 무엇을 찾는지 확실하지 않아서 결국 DB에 조회하며 프록시 객체를 초기화한다.
+
+
+
+2. 프록시 확인
+
+
+    JPA가 제공하는 persistenceUnitUtil.isLoaded(Object entity) 메소드를 사용하면 프록시 인스턴스의 초기화 여부를 확인할 수 있다.
+  아직 초기화 하지 않은 프록시 인스턴스는 false를 반환한다. 혹은 이미 초기화 되었으면 true를 반환한다.
+
+    boolean isLoad = em.getEntityManagerFactory().getPersistenceUnitUtil().isLoaded(entity);
+                            혹은
+    boolean isLoad = emf.getPersistenceUnitUtil.isLoaded(entity);
+
+
+    ++ 하이버네이트의 initialize()메소드를 사용하면 프록시를 강제로 초기화할 수 있다.
+    org.hibernate.Hibernate.initialize(order.getMember()); // 프록시 초기화
+    -- 단 JPA 표준에는 프록시 강제 초기화 메소드가 없다.
+

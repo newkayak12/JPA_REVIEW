@@ -1,0 +1,26 @@
+            *                    0..1
+    Member  ----------------------  Team
+       | 1
+       |
+       |
+       |
+       |
+       | *
+     Order  ----------------------  Product
+            *                    1
+
+
+    - 회원(Member)은 하나의 팀(Team)에만 속한다. (N:1)
+    - 회원(Member)은 여러 주문 내역(Order)을 갖는다. (1:N)
+    - 주문 내역(Order)은 상품 정보(Product)를 가진다. (N:1)
+
+    >> Member는 Team과 자주 함꼐 사용되었다. 그래서 즉시 로딩
+    >> Member와 Order는 자주 사용하지 않는다. 그래서 지연 로딩
+    >> Order와 Product는 자주 함께 사용되었다 그래서 즉시 로딩
+
+
+결과 값으로
+
+proxy.eagerloadNlazyload.example.MemberExample@acc1b09a
+org.hibernate.collection.internal.PersistentBag
+가 나옴
