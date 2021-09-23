@@ -7,6 +7,6 @@ import java.io.Serializable;
 @EqualsAndHashCode
 public class GrandChildIdentiIdClassId implements Serializable {
 
-    private ChildIdentiIdClassId childId;
+    private ChildIdentiIdClassId childIdentiIdClass;
     private String grandChildid;
 }
