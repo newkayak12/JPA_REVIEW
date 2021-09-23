@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
+
 public class ParentEmbedded {
     @Id
     @Column(name = "PARENTEMBEDDED_ID")

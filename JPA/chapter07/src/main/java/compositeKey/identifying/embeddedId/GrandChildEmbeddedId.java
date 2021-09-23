@@ -8,6 +8,7 @@ import javax.persistence.Embedded;
 import java.io.Serializable;
 
 @Embeddable
+
 @EqualsAndHashCode
 public class GrandChildEmbeddedId implements Serializable {
     @Embedded

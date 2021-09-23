@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 public class ChildEmbedded {
 
+
     @EmbeddedId
     private ChildEmbeddedId childEmbeddedIdRef;
 
