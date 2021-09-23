@@ -1,0 +1,1 @@
+IdClass가 DB에 맞춘 방법이라면 EmbeddedId는 조금 더 객체 지향적인 방법이다.

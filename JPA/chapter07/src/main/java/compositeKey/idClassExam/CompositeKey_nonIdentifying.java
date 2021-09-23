@@ -1,7 +1,4 @@
-package compositeKey.nonidentifying;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
+package compositeKey.idClassExam;
 
 public class CompositeKey_nonIdentifying {
 //    복합키를

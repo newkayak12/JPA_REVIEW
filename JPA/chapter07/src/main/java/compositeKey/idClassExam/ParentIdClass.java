@@ -1,4 +1,4 @@
-package compositeKey.nonidentifying;
+package compositeKey.idClassExam;
 
 import lombok.*;
 
@@ -14,7 +14,7 @@ import javax.persistence.IdClass;
 @ToString
 
 @Entity
-@IdClass(ParentNonIdentifyingId.class)
+@IdClass(ParentIdClassId.class)
 /*
     @IdClass를 사용할 때 식별자 클래스는
 
@@ -24,7 +24,7 @@ import javax.persistence.IdClass;
         4. 기본 생성자가 있어야한다.
         5. 식별자 클래스는 public이어야만 한다.
  */
-public class ParentNonIdentifying {
+public class ParentIdClass {
     @Id
     @Column(name = "PARENTNONIDENTIFYING_ID1")
     private String id1;
@@ -35,7 +35,7 @@ public class ParentNonIdentifying {
 
     private String name;
 
-    public ParentNonIdentifying(String id1, String id2) {
+    public ParentIdClass(String id1, String id2) {
         this.id1 = id1;
         this.id2 = id2;
     }

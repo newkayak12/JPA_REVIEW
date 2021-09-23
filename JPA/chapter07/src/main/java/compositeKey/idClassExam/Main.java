@@ -1,4 +1,4 @@
-package compositeKey.nonidentifying;
+package compositeKey.idClassExam;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -16,14 +16,14 @@ public class Main {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
-        ParentNonIdentifying parent = ParentNonIdentifying.builder().id1("myId1").id2("myId2").name("parentName").build();
+        ParentIdClass parent = ParentIdClass.builder().id1("myId1").id2("myId2").name("parentName").build();
 
         tx.begin();
         em.persist(parent);
         tx.commit();
 
-        ParentNonIdentifyingId parentId = new ParentNonIdentifyingId("myId1","myId2");
-        ParentNonIdentifying parents = em.find(ParentNonIdentifying.class, parentId);
+        ParentIdClassId parentId = new ParentIdClassId("myId1","myId2");
+        ParentIdClass parents = em.find(ParentIdClass.class, parentId);
         System.out.println(parents);
 
         em.close();
