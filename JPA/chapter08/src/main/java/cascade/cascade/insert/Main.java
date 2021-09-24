@@ -1,4 +1,7 @@
-package cascade.cascade;
+package cascade.cascade.insert;
+
+import cascade.cascade.Child_Cascade;
+import cascade.cascade.Parent_Cascade;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -33,8 +36,7 @@ public class Main {
 
         em.persist(parent);
         /*
-            JPA에서 엔티티를 저장할 떄 연관된 모든 엔티티는 영속 상태여야만 한다.
-            따라서 이를 영속성 전이로 전이 시키면 한 번에 영속성 컨텍스트에 맡길 수 있다.
+            영속성 전이는 연관된 엔티티도 같이 영속화하는 것에 그치는 것이지 연관관계 매핑과는 관련이 없다.
          */
         tx.commit();
     }
