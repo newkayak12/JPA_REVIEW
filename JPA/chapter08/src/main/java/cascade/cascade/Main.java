@@ -19,15 +19,11 @@ public class Main {
     tx.begin();
         //1번 자식
         Child_Cascade child1 = new Child_Cascade();
-        child1.setId(1L);
-
         //2번 자식
         Child_Cascade child2 = new Child_Cascade();
-        child1.setId(2L);
 
 
         Parent_Cascade parent = new Parent_Cascade();
-        parent.setId(1L);
 
         child1.setParent(parent);
         child2.setParent(parent);
