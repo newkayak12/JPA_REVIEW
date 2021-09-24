@@ -1,0 +1,1 @@
+QueryDSL은 Criteria처럼 JPQL 빌더 역할을 한다. QueryDSL은 코드 기반이면서 단순하고 사용하기 쉽다는 것이다.
