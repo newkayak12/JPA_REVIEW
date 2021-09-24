@@ -1,0 +1,4 @@
+임베디드 타입은 직접 정의한 자료형이다.
+
+@AttributeOverride : 속성 재정의
+    - 임베디드 타입에 정의한 매핑 정보를 재정의하려면 엔티티에 @AttributeOverride를 사용하면 된다.
