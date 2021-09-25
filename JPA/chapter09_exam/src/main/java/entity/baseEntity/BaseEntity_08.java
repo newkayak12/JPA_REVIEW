@@ -1,5 +1,7 @@
 package entity.baseEntity;
 
+import lombok.*;
+
 import javax.persistence.MappedSuperclass;
 import java.util.Date;
 
