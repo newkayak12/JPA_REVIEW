@@ -1,6 +1,0 @@
-사용자 정의 함수
-
-문법 :
-    function_invocatoin::=FUNCTION(function_name {,function_arg} *)
-예시 :
-    select function('group_concat', i.name) from Item i
