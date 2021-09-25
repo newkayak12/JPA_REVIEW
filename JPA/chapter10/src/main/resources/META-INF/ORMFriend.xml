@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" version="2.1">
+    <named-query name="Friend.findByName">
+        <query>
+            <![CDATA[
+            select f
+            from Friend_namedQuery f
+            where f.name = :friendName
+            ]]>
+        </query>
+    </named-query>
+    <named-query name="Friend.count">
+        <query>
+            SELECT COUNT(f) FROM Friend_namedQuery f
+        </query>
+    </named-query>
+
+</entity-mappings>
