@@ -332,7 +332,45 @@ public class CriteriaMain {
 
 //        메인쿼리
         main.select(m).where(cb.exists(sub));
-        
+
         List<Member_criteria> lsit = em.createQuery(main).getResultList();
+    }
+
+    public static void in(){
+//        select m from Member m where m.name in ("회원1", "회원2")
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Member_criteria> cq = cb.createQuery(Member_criteria.class);
+
+        Root<Member_criteria> m  = cq.from(Member_criteria.class);
+
+        cq.select(m).where(cb.in(m.get("name")).value("회원1").value("회원2"));
+
+        TypedQuery<Member_criteria> query = em.createQuery(cq);
+        List<Member_criteria> list = query.getResultList();
+    }
+    public static void param(){
+//        select m from Member m where m.name = :nameParam
+
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Member_criteria> cq = cb.createQuery(Member_criteria.class);
+
+        Root<Member_criteria> m = cq.from(Member_criteria.class);
+
+//        param
+        cq.select(m).where(cb.equal(m.get("name"),cb.parameter(String.class, "nameParam")));
+//        미리 바인딩을 하기 위해서 parameter()를 사용한다.
+//        따로 파라미터를 또 받지 않아요 nameParam대신 파라미터를 써 넣으면 PreparedStatement로 바인딩을 받고 있다.
+
+        List<Member_criteria> list = em.createQuery(cq).setParameter("nameParam", "회원1").getResultList();
+    }
+    public static void nativeQuery(){
+            CriteriaBuilder cb= em.getCriteriaBuilder();
+            CriteriaQuery<Object> cq = cb.createQuery();
+
+            Root<Member_criteria> m = cq.from(Member_criteria.class);
+            Expression<Long> function = cb.function("SUM", Long.class, m.get("age"));
+            cq.select(function);
+            Object obj = em.createQuery(cq).getSingleResult();
+
     }
 }
