@@ -1,0 +1,41 @@
+경로 표현식은 .(점)으로 그래프를 탐색하는 것이다.
+SELECT m.username
+FROM Member m
+    JOIN m.team t
+    JOIN m.orders o
+WHERE t.name = '팀1';
+
+여기에서 m.username, m.team, m.orders, t.name 모두 경로 표현식을 사용한 것이다.
+
+경로 표현식의 용어 정리
+
+1. 상태 필드(state field) : 단순히 값을 저장하기 위한 필드이다.(field or property)
+2. 연관 필드(association field) : 연관관계를 위한 필드이다. 임베디드 타입을 포함한다(field or property)
+    - 단일 값 연관 필드(@ManyToOne, @OneToOne) > 대상이 엔티티
+    - 컬렉션 값 연관 필드(@OneToMany, @ManyToMany) > 대상이 컬렉션
+
+
+
+>> 경로 표현식과 특징
+1. 상태 필드 경로 : 경로 탐색의 끝이다. 더는 탐색할 수 없다.
+2. 단일 값 연관 경로 : 묵시적 내부 조인이 일어난다. 단일 값 연관 경로는 계속 탐색할 수 있다.
+3. 컬렉션 값 연관 경로 : 묵시적으로 내부 조인이 일어난다. 더는 탐색할 수 없다. FROM 절에서 조인을 통해 별칭을 얻으면 별칭으로 탐색할 수 있다.
+
+
+>>>> 상태 필드 경로 탐색
+select m.name, m.age from Member m;
+
+>>>> 단일 값 연관 경로 탐색
+select o.member from Order o;
+
+== SELECT m.* from Order o inner join Member m on o.member_id=m.id (join을 적지 않아도 알아서 join이 발생하는 묵시적 조인이 발생함)
+>>>
+
+>>>> 컬렉션 값 연관 경로 탐색
+select t.members from Team t >  경로 탐색 성공
+select t.members.username from Team t > 경로 탐색 실패
+
+>> 컬렉션까지는 경로 탐색이 가능하지만 컬렉션 내부까지 탐색하는 것은 불가능하다. 만약 이를 하고 싶으면
+select m.username from Team t join t.members m 와 같이 접근할 수 있다.
+
+** 조인은 성능적으로 민감하다. 따라서 최대한 묵시적 조인보다는 명시적 조인으로 분석하기 쉽도록 하는 것이 좋다.
