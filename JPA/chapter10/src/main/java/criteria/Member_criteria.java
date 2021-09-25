@@ -1,15 +1,15 @@
 package criteria;
 
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Setter
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Builder
 
 @Entity(name = "MEMBER_CRITERIA")
 public class Member_criteria {
@@ -20,4 +20,9 @@ public class Member_criteria {
 
     @Column(name = "MEMBER_CRITERIA_NAME")
     private String name;
+    private int age;
+
+    @ManyToOne
+    @JoinColumn(name = "TEAM_CRITERIA_ID")
+    private  Team_criteria team;
 }
