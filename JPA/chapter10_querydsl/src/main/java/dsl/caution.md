@@ -1,4 +1,4 @@
-# 오류
+# 오류 09/26
 ```java
 import javax.annotation.Generated;
 import com.mysema.query.types.Path;
