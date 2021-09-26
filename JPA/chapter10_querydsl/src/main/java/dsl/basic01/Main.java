@@ -1,20 +1,18 @@
-package dsl;
+package dsl.basic01;
 
-import com.mysema.query.QueryFactory;
-import com.mysema.query.QueryModifiers;
 import com.mysema.query.SearchResults;
 import com.mysema.query.Tuple;
-import com.mysema.query.jpa.JPAExpressions;
 import com.mysema.query.jpa.JPASubQuery;
 import com.mysema.query.jpa.impl.JPAQuery;
-import com.mysema.query.jpa.impl.JPAQueryFactory;
-import org.hibernate.jpa.HibernateQuery;
+import com.mysema.query.types.Projections;
+import com.mysema.query.types.QTuple;
+import dsl.entity.*;
 
-import javax.inject.Provider;
 import javax.persistence.*;
 import java.util.List;
-import static dsl.QMember_queryDSL.member_queryDSL;
-import static dsl.QItem_queryDSL.item_queryDSL;
+import static dsl.entity.QItem_queryDSL.item_queryDSL;
+import static dsl.entity.QMember_queryDSL.member_queryDSL;
+
 //위의 코드로 아래에서 QMember를 따로 부를 필요가 없어진다.
 public class Main {
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("hibernate");
@@ -28,14 +26,19 @@ public class Main {
 //                paging();
 //                    groupby();
 //                        join();
-                            subquery();
+//                            subquery();
+//                                projection();
+                                        dto();
+
+
     }
+
 
     public static void insert(){
         Item_queryDSL i1 = Item_queryDSL.builder().name("mouse").price(10000).detail("고급").build();
         Item_queryDSL i2 = Item_queryDSL.builder().name("keyboard").price(12000).detail("저급").build();
         Item_queryDSL i3 = Item_queryDSL.builder().name("printer").price(230000).detail("고급").build();
-        Item_queryDSL i4 = Item_queryDSL.builder().name("moniter").price(710000).detail("고급").build();
+        Item_queryDSL i4 = Item_queryDSL.builder().name("monitor").price(710000).detail("고급").build();
 
         tx.begin();
         em.persist(i1);
@@ -172,5 +175,49 @@ public class Main {
         )).list(item);
         System.out.println(list2);
 // 여러 건의 결과가 나오는 서브쿼리
+    }
+
+//    프로젝션과 결과 반환
+    public static void projection(){
+        JPAQuery query =  new JPAQuery(em);
+        List<Item_queryDSL> list = query.from(item_queryDSL).list(item_queryDSL);
+//        프로젝션 대상이 하나
+
+
+        query = new JPAQuery(em);
+        List<Tuple> result = query.from(item_queryDSL).groupBy( item_queryDSL.detail).list(new QTuple( item_queryDSL.detail, item_queryDSL.price.sum()));
+
+        System.out.println(result);
+//      QTuple로 컬럼을 고를 수도 있고 일반 SQL과 같이 group함수를 사용할 수도 있다.
+    }
+
+//    만약 Tuple로 받고 싶지 않다면?
+//    특정 객체로 사용하고 싶으면 Bean population 기능을 사용한다.
+    public static void dto(){
+        JPAQuery query = new JPAQuery(em);
+        List<Item_queryDSL_DTO> result = query.from(item_queryDSL).list(
+                Projections.bean(Item_queryDSL_DTO.class, item_queryDSL.detail.as("detail"), item_queryDSL.name.as("name"), item_queryDSL.price.as("price"))
+        );
+//        같으면 그냥, 다르면 .as로 별칭
+//        hmm.. singletone/ Prototype?
+        System.out.println("bean : "+result);
+
+        query = new JPAQuery(em);
+        List<Item_queryDSL_DTO> result2 = query.from(item_queryDSL).list(
+                Projections.fields(Item_queryDSL_DTO.class, item_queryDSL.price, item_queryDSL.name, item_queryDSL.detail)
+        );
+//      setter?
+        System.out.println("field : "+result2);
+
+        query = new JPAQuery(em);
+        List<Item_queryDSL_DTO> result3 = query.from(item_queryDSL).list(
+                Projections.constructor(Item_queryDSL_DTO.class,  item_queryDSL.name,item_queryDSL.detail, item_queryDSL.price)
+        );
+//        프로젝션과 생성자와 같은 순서의 파라미터를 요구한다.
+//        constructor
+        System.out.println("constructor : "+result3);
+
+//        distinct는
+//        query.distinct().from()... 이렇게 사용한다.
     }
 }

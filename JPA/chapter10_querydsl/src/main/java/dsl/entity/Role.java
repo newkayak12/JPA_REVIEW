@@ -1,4 +1,4 @@
-package dsl;
+package dsl.entity;
 
 public enum Role {
     ADMIN,USER
