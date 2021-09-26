@@ -1,1 +1,5 @@
 QueryDSL은 Criteria처럼 JPQL 빌더 역할을 한다. QueryDSL은 코드 기반이면서 단순하고 사용하기 쉽다는 것이다.
+QueryDSL은 Criteria의 복잡함을 해소해준다.
+
+queryDSL-jpa : QueryDSL JPA 라이브러리
+queryDSL-apt : query type을 생성할 떄 필요한 라이브러리

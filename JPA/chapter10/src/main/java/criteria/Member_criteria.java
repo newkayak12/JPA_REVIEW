@@ -4,12 +4,12 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Setter
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Builder
+//@Setter
+//@ToString
+//@AllArgsConstructor
+//@NoArgsConstructor
+//@Getter
+//@Builder
 
 @Entity(name = "MEMBER_CRITERIA")
 public class Member_criteria {

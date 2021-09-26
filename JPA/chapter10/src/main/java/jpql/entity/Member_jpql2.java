@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.jdo.annotations.Order;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

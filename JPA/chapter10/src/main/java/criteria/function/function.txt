@@ -1,0 +1,59 @@
+Expression
+    function                    jpql
+    isNull()                    IS NULL
+    isNotNull()                 IS NOT NULL
+    in()                        IN
+
+Conditional
+    and()                       AND
+    or()                        OR
+    NOT()                       NOT
+    equal(),notEqual()          =, <>
+    lt(),lessThan()             <
+    le(),lessThanOrEqualTo()    <=
+    gt(),graterThan()           >
+    ge(),greaterThanOrEqualTo() >=
+    between()                   BETWEEN
+    like(),notLike()            like,not like
+    isTrue(),isFalse            IS TRUE, IS FALSE
+    in(), not(in())             IN, NOT IN
+    exists(), not(exists())     EXISTS, NOT EXISTS
+    isNull(), isNotNull         IS NULL, IS NOT NULL
+    isEmpty(), isNotEmpty()     IS EMPTY, IS NOT EMPTY
+    isMember(), isNotMember()   MEMBER OF, NOT MEMBER OF
+
+scalar
+    sum()                       +
+    neg(),diff()                -
+    prod()                      *
+    quot()                      /
+    all()                       ALL
+    any()                       ANY
+    some()                      SOME
+    abs()                       ABS
+    sqrt()                      SQRT
+    mod()                       MOD
+    size()                      SIZE
+    length()                    LENGTH
+    locate()                    LOCATE
+    concat()                    CONCAT
+    upper()                     UPPER
+    lower()                     LOWER
+    substring()                 SUBSTRING
+    trim()                      TRIM
+    currentDate()               CURRENT_DATE
+    currentTime()               CURRENT_TIME
+    currentTimestamp()          CURRENT_TIMESTAMP
+
+GROUP
+    avg()                               AVG
+    max(), greatest()                   MAX
+    min(), least()                      MIN
+    sum(), sumAsLong(), sumAsDouble()   SUM
+    count()                             COUNT
+    countDistinct()                     COUNT DISTINCT
+
+Case
+    nullIf()                     NULLIF
+    coalesce()                   COALESCE
+    selectCase()                 CASE

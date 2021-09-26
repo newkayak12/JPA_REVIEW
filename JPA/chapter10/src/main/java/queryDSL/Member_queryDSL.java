@@ -1,17 +1,9 @@
 package queryDSL;
 
-import com.querydsl.core.annotations.QueryEntity;
-import lombok.Setter;
-import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Setter
-@ToString
-@QueryEntity
+
 @Entity(name = "MEMBER_QUERYDSL")
 public class Member_queryDSL {
     @Id
@@ -21,4 +13,16 @@ public class Member_queryDSL {
 
     @Column(name = "MEMBER_QUERYDSL_NAME")
     private String name;
+
+    @Column(name = "MEMBER_QUERYDSL_ROLE")
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    public Member_queryDSL(String name, Role role) {
+        this.name = name;
+        this.role = role;
+    }
+
+    public Member_queryDSL() {
+    }
 }
