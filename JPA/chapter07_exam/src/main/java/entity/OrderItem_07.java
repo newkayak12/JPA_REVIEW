@@ -1,7 +1,6 @@
 package entity;
 
 import entity.baseEntity.BaseEntity_07;
-import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Array;
