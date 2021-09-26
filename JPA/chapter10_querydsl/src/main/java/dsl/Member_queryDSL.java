@@ -1,13 +1,13 @@
 package dsl;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 @ToString
 @Setter
 @Getter
+@AllArgsConstructor
+@Builder
 @Entity(name = "MEMBER_QUERYDSL")
 public class Member_queryDSL {
     @Id
@@ -17,6 +17,10 @@ public class Member_queryDSL {
 
     @Column(name = "MEMBER_QUERYDSL_NAME")
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "ITEM_QUERYDSL_ID")
+    private Item_queryDSL item;
 
     @Column(name = "MEMBER_QUERYDSL_ROLE")
     @Enumerated(EnumType.STRING)
