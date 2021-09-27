@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" version="2.1">
+    <named-native-query name="Hobby_native.query" result-set-mapping="Hobby">
+        <query>
+            <![CDATA[
+                SELECT HOBBY, HOW_LONG FROM HOBBY_NATIVE    
+            ]]>
+        </query>
+    </named-native-query>
+    <sql-result-set-mapping name="Hobby">
+        <entity-result entity-class="nativeQuery.entity.Hobby_Native"/>
+        <column-result name="hobby"/>
+        <column-result name="howLong"/>
+    </sql-result-set-mapping>
+</entity-mappings>
