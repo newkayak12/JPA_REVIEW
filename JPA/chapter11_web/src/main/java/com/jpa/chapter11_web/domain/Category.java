@@ -38,7 +38,7 @@ public class Category {
 	
 	// parent
 	@ManyToOne
-	@JoinColumn(name = "CATEGORY_ID")
+	@JoinColumn(name = "PARENT_ID")
 	private Category parent;
 
 	@OneToMany(mappedBy = "parent")

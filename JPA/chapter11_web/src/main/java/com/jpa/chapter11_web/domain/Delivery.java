@@ -28,6 +28,7 @@ public class Delivery {
 	@Id
 	@GeneratedValue
 	@Column(name = "DELIVERY_ID")
+	private Long id;
 
 	@OneToOne(mappedBy = "delivery")
 	private Order order;
