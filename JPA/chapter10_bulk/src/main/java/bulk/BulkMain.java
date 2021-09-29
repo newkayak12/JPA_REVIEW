@@ -12,9 +12,10 @@ public class BulkMain {
     static EntityTransaction tx = em.getTransaction();
 
     public static void main(String[] args) {
-        bulkUpdate();
+//        bulkUpdate();
 //        bulkDelete();
-            bulkInsert();
+//            bulkInsert();
+            caution();
     }
     public static void insert(){
         Item_bulk i1 = Item_bulk.builder().itemBulkName("i1").itemBulkPrice(200).itemBulkStock(40).build();
@@ -87,5 +88,40 @@ public class BulkMain {
         TypedQuery<Item_bulk_temp> queries = em.createQuery("select i from Item_bulk_temp i", Item_bulk_temp.class);
         List<Item_bulk_temp> list = queries.getResultList();
         System.out.println(list);
+    }
+    public static void caution(){
+        insert();
+        Item_bulk itemBefore = em.createQuery("select i from Item_bulk i where i.itemBulkName = :name", Item_bulk.class).setParameter("name", "i1").getSingleResult();
+
+        System.out.println("Before :  "+itemBefore);
+//       가격 200
+
+        tx.begin();  //dml은 트랜잭션 처리를 요구함
+        em.createQuery("UPDATE Item_bulk i set i.itemBulkPrice = i.itemBulkPrice * 2").executeUpdate();
+        System.out.println("bulk update");
+        tx.commit();
+        //가격 400으로 올려버림
+
+
+        System.out.println("after : " + itemBefore);
+//      가격 200,  추적을 하지 못 함.
+
+        ///////////////////////////////// em.refresh()로 대체할 수 있다.
+        em.detach(itemBefore);
+//        준영속 상태로 만들기
+
+//       엔티티를 준영속 상태로 만들고 DB에서 다시 쿼리해와야만 반영된 값을 알 수 있다.
+        itemBefore = em.createQuery("select i from Item_bulk i where i.itemBulkName = :name", Item_bulk.class).setParameter("name", "i1").getSingleResult();
+        //////////////////////////////////////////////
+        System.out.println("hmm " + itemBefore );
+
+        /*
+            위의 예시가 벌크 연산의 치명적인 단점의 예시이다.
+            벌크 연산은 영속성 컨텍스트를 통하지 않고 데이터베이스에 직접 쿼리한다. 이는 영속성 컨텍스트와 DB의 무결성을 해친다.
+
+            이를 해결할 수 있는 방법은 em.refresh()로 다시 DB에서 다시 조회해오면 된다.
+            혹은 벌크 연산을 먼저 실행한다.
+            그 이외에는 영속성 컨텍스트를 아예 초기화시켜버리는 방법이 있다.
+         */
     }
 }
