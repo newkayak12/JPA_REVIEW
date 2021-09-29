@@ -78,14 +78,14 @@ public class BulkMain {
         /*
             하이버 네이트는 INSERT 벌크 연산도 지원한다. 물론 JPA표준은 아니다.
          */
-//        String query = "INSERT INTO Item_bulk_temp (ITEM_BULK_TEMP_ID, itemBulkTempName, itemBulkTempPrice, itemBulkTempStock) SELECT i.ITEM_BULK_ID, i.itemBulkName, i.itemBulkPrice, i.itemBulkStock FROM ITEM_BULK i where i.itemBulkPrice > :itemBulkPrice";
-        String query = "INSERT INTO Item_bulk_temp (ITEM_BULK_TEMP_ID, item_Bulk_Temp_Name, item_Bulk_Temp_Price, item_Bulk_Temp_Stock) SELECT i.ITEM_BULK_ID, i.item_Bulk_Name, i.item_Bulk_Price, i.item_Bulk_Stock FROM Item_bulk i where i.item_Bulk_Price > :itemBulkPrice";
+        String query = "INSERT INTO Item_bulk_temp (id, itemBulkTempName, itemBulkTempPrice, itemBulkTempStock) SELECT i.id, i.itemBulkName, i.itemBulkPrice, i.itemBulkStock FROM Item_bulk i where i.itemBulkPrice > :itemBulkPrice";
+//        String query = "INSERT INTO Item_bulk_temp (ITEM_BULK_TEMP_ID, item_Bulk_Temp_Name, item_Bulk_Temp_Price, item_Bulk_Temp_Stock) SELECT i.ITEM_BULK_ID, i.item_Bulk_Name, i.item_Bulk_Price, i.item_Bulk_Stock FROM Item_bulk i where i.item_Bulk_Price > :itemBulkPrice";
         tx.begin();
-        int count = em.createNativeQuery(query).setParameter("itemBulkPrice", 600).executeUpdate();
+        int count = em.createQuery(query).setParameter("itemBulkPrice",600).executeUpdate();
+//        int count = em.createNativeQuery(query).setParameter("itemBulkPrice", 600).executeUpdate();
         tx.commit();
         TypedQuery<Item_bulk_temp> queries = em.createQuery("select i from Item_bulk_temp i", Item_bulk_temp.class);
         List<Item_bulk_temp> list = queries.getResultList();
         System.out.println(list);
-//        ....네이티브 쿼리는 되는데.. JPQL은 다시 해봐야곘네
     }
 }
