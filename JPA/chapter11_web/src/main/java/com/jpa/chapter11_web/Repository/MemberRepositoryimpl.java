@@ -2,7 +2,6 @@ package com.jpa.chapter11_web.Repository;
 
 import java.util.List;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -33,6 +32,7 @@ public class MemberRepositoryimpl implements MemberRepository {
 	@Override
 	public void save(Member member) {
 		em.persist(member);
+		em.flush();
 	}
 
 	@Override

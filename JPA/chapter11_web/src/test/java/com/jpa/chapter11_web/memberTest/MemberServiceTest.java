@@ -1,52 +1,54 @@
 package com.jpa.chapter11_web.memberTest;
 
 
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 import com.jpa.chapter11_web.Repository.MemberRepositoryimpl;
 import com.jpa.chapter11_web.Service.MemberServiceimpl;
 import com.jpa.chapter11_web.domain.Member;
 
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringRunner;
 
-// @RunWith(SpringRunner.class)
-@Transactional
-@TestPropertySource("classpath:application.properties")
 // @ExtendWith(SpringExtension.class)
-@RunWith(SpringRunner.class)
+@TestPropertySource("classpath:application.properties")
 @DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+// @RunWith(SpringJUnit4ClassRunner.class)
 public class MemberServiceTest {
 	@Mock
-	MemberServiceimpl service;
-	@MockBean
 	MemberRepositoryimpl repo;
 
 	@Test
+	@DisplayName("enroll")
 	public void enroll() throws Exception{
 		// 주어진 값
-		Member member = new Member();
+
+
 		String name = "kim";
-		member.setName(name);
-
+		final Member member = Member.builder().name(name).build();
+		
 		//trigger
-		repo.save(member);
-		List<Member> mem = repo.findByName(name);
-
+		repo.save(member);	
+		 Member member2 = repo.findOne(1L);
 
 		//match
-		Assertions.assertEquals(1, mem.size());
-	}
+		Assertions.assertNotNull(member2);
+	}	
 }
