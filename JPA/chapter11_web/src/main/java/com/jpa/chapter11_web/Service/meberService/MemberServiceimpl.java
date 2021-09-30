@@ -1,10 +1,10 @@
-package com.jpa.chapter11_web.Service;
+package com.jpa.chapter11_web.Service.meberService;
 
 import java.util.List;
 
 import javax.transaction.Transactional;
 
-import com.jpa.chapter11_web.Repository.MemberRepository;
+import com.jpa.chapter11_web.Repository.memberRepository.MemberRepository;
 import com.jpa.chapter11_web.domain.Member;
 
 import org.springframework.beans.factory.annotation.Autowired;

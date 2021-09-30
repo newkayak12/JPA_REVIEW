@@ -1,6 +1,6 @@
 package com.jpa.chapter11_web.Controller;
 
-import com.jpa.chapter11_web.Service.MemberService;
+import com.jpa.chapter11_web.Service.meberService.MemberService;
 import com.jpa.chapter11_web.domain.Member;
 import com.jpa.chapter11_web.domain.embedded.Address;
 
@@ -13,8 +13,6 @@ public class MainController {
 	MemberService service;
 	@RequestMapping("/")
 	public String gotoMain(){
-		Member m = Member.builder().name("name").build();
-		service.join(m);
 		return "index";
 	}
 }

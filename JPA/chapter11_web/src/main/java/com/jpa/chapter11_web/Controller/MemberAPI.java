@@ -1,6 +1,6 @@
 package com.jpa.chapter11_web.Controller;
 
-import com.jpa.chapter11_web.Service.MemberService;
+import com.jpa.chapter11_web.Service.meberService.MemberService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

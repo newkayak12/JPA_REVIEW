@@ -1,4 +1,4 @@
-package com.jpa.chapter11_web.Repository;
+package com.jpa.chapter11_web.Repository.memberRepository;
 
 import java.util.List;
 

@@ -20,6 +20,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.jpa.chapter11_web.domain.enumeration.DeliverStatus;
 import com.jpa.chapter11_web.domain.enumeration.OrderStatus;
 
 import lombok.AllArgsConstructor;
@@ -55,7 +56,7 @@ public class Order {
 		
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date date;
+	private Date orderDate;
 
 	@Enumerated(EnumType.STRING)
 	private OrderStatus orderStatus;
@@ -77,6 +78,36 @@ public class Order {
 	public void addDelivery(Delivery delivery){
 		this.delivery = delivery;
 		delivery.setOrder(this);
+	}
+
+	public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems){
+		Order order = new Order();
+		order.addMember(member);
+		order.addDelivery(delivery);
+		for(OrderItem orderItem : orderItems){
+			order.addOrderItem(orderItem);
+		}
+		order.setOrderStatus(OrderStatus.ORDER);
+		order.setOrderDate(new Date()); 
+		return order;
+	}
+
+	public void cancel(){
+		if(delivery.getStatus() == DeliverStatus.COMP){
+			throw new RuntimeException("이미 배송완료된 상품은 취소가 불가능합니다.");
+		}
+		this.setOrderStatus(OrderStatus.CACEL);
+		for(OrderItem orderItem : orderItems){
+			orderItem.cancel();
+		}
+	}
+
+	public int getTotalPrice(){
+		int totalPrice = 0;
+		for(OrderItem orderItem : orderItems){
+			totalPrice+=orderItem.getTotalPrice();
+		}
+		return totalPrice;
 	}
 
 }

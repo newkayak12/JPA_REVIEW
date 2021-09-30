@@ -1,4 +1,4 @@
-package com.jpa.chapter11_web.Service;
+package com.jpa.chapter11_web.Service.meberService;
 
 import java.util.List;
 

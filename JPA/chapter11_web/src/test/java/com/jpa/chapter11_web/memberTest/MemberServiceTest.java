@@ -33,7 +33,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 // @RunWith(SpringJUnit4ClassRunner.class)
 public class MemberServiceTest {
 	@Mock
-	MemberRepositoryimpl repo;
+	com.jpa.chapter11_web.Repository.memberRepository.MemberRepositoryimpl repo;
 
 	@Test
 	@DisplayName("enroll")
