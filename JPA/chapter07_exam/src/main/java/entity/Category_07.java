@@ -10,7 +10,6 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 
 @Entity
 public class Category_07 extends BaseEntity_07 {

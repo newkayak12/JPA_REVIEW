@@ -1,16 +1,17 @@
 package entity;
 
 import entity.baseEntity.BaseEntity_07;
+import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.*;
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 
 @Entity
 public class OrderItem_07 extends BaseEntity_07 {

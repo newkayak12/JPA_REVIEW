@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 
 @Entity
 public class Delivery_07 extends BaseEntity_07 {
