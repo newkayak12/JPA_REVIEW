@@ -1,0 +1,8 @@
+*{
+	border: 1px black solid;
+}
+.justifyBetween{
+	display: flex;
+	justify-content: space-between;
+
+}
