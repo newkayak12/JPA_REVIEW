@@ -1,10 +1,9 @@
-package com.jpa.chapter11_web.Controller;
-
-import com.jpa.chapter11_web.Service.meberService.MemberService;
+package com.jpa.chapter11_web.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.jpa.chapter11_web.Service.meberService.MemberService;
 
 @RestController
 public class MemberAPI {

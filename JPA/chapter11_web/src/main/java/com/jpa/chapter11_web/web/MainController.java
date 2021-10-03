@@ -1,4 +1,4 @@
-package com.jpa.chapter11_web.Controller;
+package com.jpa.chapter11_web.web;
 
 import com.jpa.chapter11_web.Service.meberService.MemberService;
 import com.jpa.chapter11_web.domain.Member;
