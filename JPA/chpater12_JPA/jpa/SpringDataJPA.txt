@@ -247,4 +247,13 @@
 								public String list(@PageableDefault(size = 12, sort = "name", direction = Sort.Direction.DESC) Pageable pageable)
 									
 
-				 
+			4. 스프링 데이터 JPA가 사용하는 구현체
+				@Repository : JPA 예외를 스프링이 추상화한 예외로 변환한다.
+				@Transactional : JPA의 모든 변경은 트랜잭션 안에서 이뤄져야한다. 스프링 데이터 JPA가 제공하는 공통인터페이스를 사용하면 등록, 수정, 삭제 메소드에 @Transactional 처리가 되어있다.(따로 열지 않으면 이를 사용)
+						서비스 계층에서 선언했다면 레포지토리도 이를 전파 받아 사용한다.
+				@Transactional(ReadOnly = true) : 데이터를 조회하는 메소드에는 ReadOnly=true가 적용되어 있다. 이를 사용하면 플러시를 생략해서 약간의 성능 향상을 얻을 수 있다. 
+				save() : 새로운 엔티티면 저장, 기존의 엔티티면 병합한다. 객체이면 null, 자바 기본타입이면 0일 때 새로운 엔티티로 판단한다.
+					Persistable 엔터페이스를 구현해서 판단 로직을 변경할 수 있다. 
+				
+
+			

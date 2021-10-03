@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 import com.jpa.jpa.domain.Item;
 // @Repository
 @RequiredArgsConstructor
-public class ItemRepositoryImpl implements ItemRepositoryCustom {
+public class ItemRepositoryImpl implements ItemRepository {
 	@PersistenceContext
 	EntityManager em;
 	@Override
@@ -26,12 +26,12 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
 	}
 
 	@Override
-	public Item findOnes(Long id) {
+	public Item findOne(Long id) {
 		return em.find(Item.class, id);
 	}
 
 	@Override
-	public List<Item> findAlls() {
+	public List<Item> findAll() {
 		return em.createQuery("SELECT i  FROM Item i", Item.class).getResultList();
 	}
 	

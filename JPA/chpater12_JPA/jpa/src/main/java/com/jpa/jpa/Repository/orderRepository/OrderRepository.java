@@ -7,7 +7,7 @@ import com.jpa.jpa.domain.OrderSearch;
 
 public interface OrderRepository {
 	
-	public void save(Order order);
+	public void saves(Order order);
 	public Order findOne(Long id);
 	public List<Order> findAll(OrderSearch OrderSearch);
 }

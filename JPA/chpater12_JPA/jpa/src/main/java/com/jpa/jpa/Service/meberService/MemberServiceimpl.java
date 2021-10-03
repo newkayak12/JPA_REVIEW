@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jpa.jpa.Repository.memberRepository.MemberRepository;
+import com.jpa.jpa.Repository.memberRepository.MemberRepositoryJPA;
 import com.jpa.jpa.domain.Member;
 
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MemberServiceimpl implements MemberService{
 	@Autowired
-	MemberRepository repo;
+	MemberRepositoryJPA repo;
 	@Override
 	public Long join(Member member) {
 		validateDuplicateMember(member);
@@ -50,7 +50,8 @@ public class MemberServiceimpl implements MemberService{
 
 	@Override
 	public Member findOne(Long memberId) {
-		return repo.findOne(memberId);
+		
+		return repo.findById(memberId).get();
 	}
 	
 }

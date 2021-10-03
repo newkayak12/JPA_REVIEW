@@ -7,8 +7,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jpa.jpa.Repository.memberRepository.MemberRepository;
-import com.jpa.jpa.Repository.orderRepository.OrderRepository;
+import com.jpa.jpa.Repository.memberRepository.MemberRepositoryJPA;
+import com.jpa.jpa.Repository.orderRepository.OrderRepositoryJPA;
 import com.jpa.jpa.Service.itemService.ItemService;
 import com.jpa.jpa.domain.Delivery;
 import com.jpa.jpa.domain.Item;
@@ -20,12 +20,12 @@ import com.jpa.jpa.domain.OrderSearch;
 @Service
 @Transactional
 public class OrderServiceImpl implements OrderService{
-	@Autowired MemberRepository memberRepo;
-	@Autowired OrderRepository orderRepo;
+	@Autowired MemberRepositoryJPA memberRepo;
+	@Autowired OrderRepositoryJPA orderRepo;
 	@Autowired ItemService itemService;
 	@Override
 	public Long order(Long memberId, Long itemId, int count) {
-		Member member = memberRepo.findOne(memberId);
+		Member member = memberRepo.findById(memberId).get();
 		Item item = itemService.findOne(itemId);
 
 		Delivery delivery = new Delivery(member.getAddress());
@@ -37,13 +37,15 @@ public class OrderServiceImpl implements OrderService{
 
 	@Override
 	public void cancelOrder(Long orderId) {
-		Order order = orderRepo.findOne(orderId);
+		Order order = orderRepo.findById(orderId).get();
 		order.cancel();
 	}
 
 	@Override
-	public List<Order> findOrders(OrderSearch OrderSearch) {
-		return orderRepo.findAll(OrderSearch);
+	public List<Order> findOrders(OrderSearch orderSearch) {
+		// return orderRepo.findAll(OrderSearch);
+		// return orderRepo.(orderSearch.toSpecification());
+		return orderRepo.findAll(orderSearch);
 	}
 	
 
